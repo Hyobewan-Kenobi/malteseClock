@@ -17,7 +17,7 @@
         <!-- our css -->
         <!-- media supports specialized css like display (screen) and printing (print) -->
         <meta name="apple-mobie-web-app-capable" content="yes">
-        <meta name="apple-mobie-web-app-tittle" content="Color clock">
+        <meta name="apple-mobie-web-app-tittle" content="Maltese clock">
         <meta name="apple-mobie-web-app-status-bar-style" content="black">
         <link
         rel="apple-touch-icon"
@@ -133,15 +133,16 @@
             /* tag selectors */
             /* stanardizing reset: html and body fill screen, with no margin or padding */
             html, body {
-                width  :100%;
-                height :100%;
-                margin :0;
-                padding:0;
+                width  :100vw;
+                height :100vw;
+                margin :0px;
+                padding:0px;
             }
 
             /* initial body color chosen to match temporary splash screen art we'll get later */
             body {
                 background:#FFDDDD;
+                
             }
 
             .visibleText {
@@ -153,14 +154,17 @@
             }
 
             #buttons {
-                width: 100%;
+                width: auto;
                 text-align: center;
+                flex:auto;
+                position:relative;
+
             }
 
             #buttons a {
-                display: inline-block;
+                display: inline-flex;
                 width: 49%;
-                height: 240px;
+                height: auto;
                 background-color: rgb(205, 203, 210);
                 opacity: 0.6;
                
@@ -171,7 +175,9 @@
             }
 
             #buttons img {
-              object-fit: cover
+              object-fit: cover;
+              max-width: 100vw;
+              height: auto;
             }
 
             #clock {
@@ -188,6 +194,15 @@
                 -webkit-user-select: none;
                 -webkit-touch-callout: none;
                 -webkit-tap-highlight-color: 0;
+            }
+
+            #background {
+              width: 250%;
+              height: auto;
+              position: absolute;
+              top:-90%;
+              right: -70%;
+              pointer-events: none;
             }
 
         </style>
@@ -300,29 +315,27 @@
         <!-- "instead, we paint on a canvas that we can move, rotate, show/hide, etc."-->
         <div id="clock">
 
-            <!-- contianer for all clock text. we'll use a different destination for time and color to learn about toggling multiple elements. another approach would be to overwrite the content of a single element. I'd like to see someone try this for the final project! -->
-            <img src="/buttonimg/runningDog.gif">
+          <!-- contianer for all clock text. we'll use a different destination for time and color to learn about toggling multiple elements. another approach would be to overwrite the content of a single element. I'd like to see someone try this for the final project! -->
 
-            <div id="textDisplay">
+          <div id="textDisplay">
 
-                <!-- time with placeholder text. use same classes for all text. -->
-                <div id="time" class="visibleText">00:00:00</div>
+              <!-- time with placeholder text. use same classes for all text. -->
+              <div id="time" class="visibleText">00:00:00</div>
 
-                <div id="hex" class="visibleText" 
-                style="display:none;">#000000</div>
-                
-                <!-- color with placeholder text. -->
-                <!-- demonstrates lowest-level of CSS, injected directly into element. style HTML attribute contains CSS -->
-                <!-- we learned block, inline, and inline-block display values. None will remove element from render -->
-                
-            </div>
+              <div id="hex" class="visibleText" 
+              style="display:none;">#000000</div>
+              
+              <!-- color with placeholder text. -->
+              <!-- demonstrates lowest-level of CSS, injected directly into element. style HTML attribute contains CSS -->
+              <!-- we learned block, inline, and inline-block display values. None will remove element from render -->
+              
+          </div>
 
-            <!-- container for time and color buttons -->
-            <div id="buttons">
-                <a href="#time" class="active"><img src="buttonimg/ugltmaltese1.jpeg" width="100%" height="100%"></a> <a href="#hex"><img src="buttonimg/uglymaltese2.jpeg" width="100%" height="100%"></a>
-
-            </div>
+          <!-- container for time and color buttons -->
+          <div id="buttons">
+              <a href="#time" class="active"><img src="img/timeBtn.GIF" width="100%" height="100%"></a> <a href="#hex"><img src="img/colorBtn.GIF" width="100%" height="100%"></a>
+          </div>
+          <img id="background" src="/img/background.GIF">
         </div>
-
     </body>
 </html>

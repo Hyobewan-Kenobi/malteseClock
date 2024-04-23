@@ -1,2 +1,2 @@
 # malteseClock
-Fun web-based clock project with Yuling
+Fun web-based color clock project with Yuling
